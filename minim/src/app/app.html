@@ -1,0 +1,55 @@
+<ion-nav [root]="rootPage"></ion-nav>
+
+
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Estadistiques</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div align="center">
+        <h1>Estadistica de Les activitats per usuari</h1>
+        <table>
+          <thead>
+          <tr>
+            <th>Photo</th>
+            <th>User</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td>
+              <ion-icon name="body"></ion-icon>
+            </td>
+            <td>
+              <button ion-button (click)="goTochart(user.id)">{{user.nom}}</button>
+
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+    </div>
+
+
+    <div *ngIf="activities" style="display: block">
+      <canvas baseChart
+
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+
+      </canvas>
+
+
+    </div>
+
+  </ion-content>
+
+
+
